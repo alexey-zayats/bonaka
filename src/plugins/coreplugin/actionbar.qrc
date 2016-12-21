@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/actionbar">
+        <file>images/mode_Design.png</file>
+        <file>images/mode_Design@2x.png</file>
+        <file>images/mode_design_mask.png</file>
+        <file>images/mode_design_mask@2x.png</file>
+    </qresource>
+</RCC>

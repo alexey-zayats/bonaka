@@ -1,0 +1,13 @@
+{
+	\"Name\" : \"Core\",
+	\"Version\" : \"$$APP_VERSION\",
+	\"CompatVersion\" : \"$$APP_COMPAT_VERSION\",
+	\"Required\" : true,
+	\"Vendor\" : \"Alexey Zayats\",
+	\"Copyright\" : \"(C) 2016 Agitum\",
+	\"License\" : [ \"\"],
+	\"Category\" : \"Athletic\",
+	\"Description\" : \"The core plugin for the Athletic.\",
+	\"Url\" : \"https://athletic.cloud/\",
+	$$dependencyList
+}
