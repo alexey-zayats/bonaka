@@ -30,7 +30,7 @@ class EditMode;
 class CorePlugin : public ExtensionSystem::IPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "cloud.athletic.app.plugin" FILE "core.json")
+    Q_PLUGIN_METADATA(IID "ru.bonaka.app.plugin" FILE "core.json")
 
 public:
     CorePlugin();

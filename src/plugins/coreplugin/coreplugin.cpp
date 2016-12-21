@@ -8,7 +8,6 @@
 #include "actionmanager/actionmanager.h"
 #include "find/findplugin.h"
 #include "modemanager.h"
-#include "helpmanager.h"
 
 #include <utils/algorithm.h>
 #include <utils/stringutils.h>
@@ -27,7 +26,7 @@ using namespace Core;
 using namespace Core::Internal;
 using namespace Utils;
 
-Q_LOGGING_CATEGORY(corepluginLog, "athletic.plugins.coreplugin")
+Q_LOGGING_CATEGORY(corepluginLog, "bonaka.plugins.coreplugin")
 
 CorePlugin::CorePlugin()
 {
@@ -37,7 +36,7 @@ CorePlugin::CorePlugin()
 CorePlugin::~CorePlugin()
 {
     delete m_mainWindow;
-    setAthleticTheme(0);
+    setTheme(0);
 }
 
 void CorePlugin::parseArguments(const QStringList &arguments)
@@ -76,7 +75,7 @@ void CorePlugin::parseArguments(const QStringList &arguments)
         theme->readSettings(themeSettings);
         if (theme->flag(Theme::ApplyThemePaletteGlobally))
             QApplication::setPalette(theme->palette());
-        setAthleticTheme(theme);
+        setTheme(theme);
     }
 
     // defer creation of these widgets until here,
@@ -113,7 +112,6 @@ void CorePlugin::extensionsInitialized()
 
 bool CorePlugin::delayedInitialize()
 {
-    HelpManager::setupHelpManager();
     return true;
 }
 

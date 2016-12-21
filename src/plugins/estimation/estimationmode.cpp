@@ -1,13 +1,10 @@
-#include "estiamtionmode.h"
+#include "estimationmode.h"
 #include "estimationicons.h"
 #include "estimationconstants.h"
 
 #include <coreplugin/coreconstants.h>
 #include <coreplugin/icore.h>
-
 #include <coreplugin/modemanager.h>
-
-#include <coreplugin/imatchboard.h>
 
 #include <extensionsystem/pluginmanager.h>
 
@@ -33,10 +30,9 @@ using namespace Core;
 using namespace Utils;
 using namespace ExtensionSystem;
 
-static const char currentPageSettingsKeyC[] = "EstimationTab";
+// static const char currentPageSettingsKeyC[] = "EstimationTab";
 
 EstimationMode::EstimationMode()
-    : m_activePlugin(0)
 {
     setDisplayName(tr("Estimation"));
 
@@ -69,54 +65,7 @@ EstimationMode::EstimationMode()
 
 EstimationMode::~EstimationMode()
 {
-    QSettings *settings = ICore::settings();
-    settings->setValue(QLatin1String(currentPageSettingsKeyC), activePlugin());
     delete m_modeWidget;
 }
 
-void EstimationMode::initPlugins()
-{
-    QSettings *settings = ICore::settings();
-    setActivePlugin(settings->value(QLatin1String(currentPageSettingsKeyC)).toInt());
 
-
-    QList<IMatchBoard *> availablePages = PluginManager::getObjects<IMatchBoard>();
-    addPages(availablePages);
-
-    // make sure later added pages are made available too:
-    connect(PluginManager::instance(), &PluginManager::objectAdded,
-            this, &AthleteMode::pluginAdded);
-}
-
-void EstimationMode::pluginAdded(QObject *obj)
-{
-    IMatchBoard *page = qobject_cast<IMatchBoard*>(obj);
-    if (!page)
-        return;
-    addPages(QList<IMatchBoard *>() << page);
-}
-
-void EstimationMode::addPages(const QList<IMatchBoard *> &pages)
-{
-    QList<IMatchBoard *> addedPages = pages;
-    Utils::sort(addedPages, [](const IMatchBoard *l, const IMatchBoard *r) {
-        return l->priority() < r->priority();
-    });
-
-    // insert into m_pluginList, keeping m_pluginList sorted by priority
-    auto addIt = addedPages.begin();
-    auto currentIt = m_pluginList.begin();
-    while (addIt != addedPages.end()) {
-        IMatchBoard *page = *addIt;
-        while (currentIt != m_pluginList.end() && (*currentIt)->priority() <= page->priority())
-            ++currentIt;
-        // currentIt is now either end() or a page with higher value
-        currentIt = m_pluginList.insert(currentIt, page);
-        m_idPageMap.insert(page->id(), page);
-
-//        page->facilitateQml(engine);
-
-        ++currentIt;
-        ++addIt;
-    }
-}

@@ -2,6 +2,7 @@ DEFINES += CORE_LIBRARY
 DEFINES += APP_SHOW_BUILD_DATE
 
 QT += \
+	help \
 	network \
 	printsupport \
 	sql \
@@ -40,7 +41,6 @@ SOURCES += \
 	statusbarmanager.cpp \
 	statusbarwidget.cpp \
 	minisplitter.cpp \
-	helpmanager.cpp \
 	dialogs/ioptionspage.cpp \
 	dialogs/settingsdialog.cpp \
 	dialogs/shortcutsettings.cpp \
@@ -127,7 +127,6 @@ HEADERS += \
 	statusbarmanager.h \
 	statusbarwidget.h \
 	minisplitter.h \
-	helpmanager.h \
 	dialogs/ioptionspage.h \
 	dialogs/settingsdialog.h \
 	dialogs/shortcutsettings.h \
@@ -197,9 +196,7 @@ FORMS = \
 	find/finddialog.ui \
 
 RESOURCES += \
-	coreplugin.qrc \
-	core.qrc \
-	actionbar.qrc \
+core.qrc
 
 win32 {
 	SOURCES += progressmanager/progressmanager_win.cpp

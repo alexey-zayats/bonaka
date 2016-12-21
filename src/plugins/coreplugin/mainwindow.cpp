@@ -16,7 +16,7 @@
 #include <QToolButton>
 #include <QUrl>
 
-#include <athletic/athletic_version.h>
+#include <bonaka/bonaka_version.h>
 #include <extensionsystem/pluginmanager.h>
 
 #include <utils/hostosinfo.h>
@@ -45,7 +45,6 @@
 #include <coreplugin/documentmanager.h>
 
 #include "modemanager.h"
-#include "helpmanager.h"
 
 #include "statusbarmanager.h"
 #include "statusbarwidget.h"
@@ -68,8 +67,6 @@
 
 #include "mainwindow.h"
 
-#include "sportselector/sportselectorwidget.h"
-
 using namespace ExtensionSystem;
 using namespace Utils;
 
@@ -83,14 +80,13 @@ MainWindow::MainWindow() :
     m_coreImpl(new ICore(this)),
     m_lowPrioAdditionalContexts(Constants::C_GLOBAL),
     m_settingsDatabase(new SettingsDatabase(QFileInfo(PluginManager::settings()->fileName()).path(),
-                                               QLatin1String("Athletic"),
+                                               QLatin1String("Bonaka"),
                                                this)),
     m_windowSupport(0),
 //    m_editorManager(0),
     m_progressManager(new ProgressManagerPrivate),
     m_statusBarManager(0),
     m_modeManager(0),
-    m_helpManager(new HelpManager),
     m_modeStack(new TabWidget(this)),
     m_navigationWidget(0),
     m_rightPaneWidget(0),
@@ -107,18 +103,17 @@ MainWindow::MainWindow() :
     m_toggleSideBarAction(0),
     m_toggleSideBarButton(new QToolButton),
     m_toggleModeSelectorAction(0),
-    m_sportSelector(0),
     m_projectSelectorAction(0)
 {
     (void) new DocumentManager(this);
     OutputPaneManager::create();
     HistoryCompleter::setSettings(PluginManager::settings());
 
-    setWindowTitle(tr("Athletic"));
+    setWindowTitle(tr("Bonaka"));
 
     QApplication::setWindowIcon(Icons::LOGO_128.icon());
 
-    QCoreApplication::setApplicationName(QLatin1String("Athletic"));
+    QCoreApplication::setApplicationName(QLatin1String("Bonaka"));
     QCoreApplication::setApplicationVersion(QLatin1String(Constants::APP_VERSION_LONG));
     QCoreApplication::setOrganizationName(QLatin1String(Constants::APP_AUTHOR));
 
@@ -132,7 +127,7 @@ MainWindow::MainWindow() :
     // if the user has specified as base style in the theme settings,
     // prefer that
     const QStringList available = QStyleFactory::keys();
-    foreach (const QString &s, Utils::athleticTheme()->preferredStyles()) {
+    foreach (const QString &s, Utils::appTheme()->preferredStyles()) {
         if (available.contains(s, Qt::CaseInsensitive)) {
             baseName = s;
             break;
@@ -264,10 +259,6 @@ MainWindow::~MainWindow()
 
     delete m_modeManager;
     m_modeManager = 0;
-
-    delete m_helpManager;
-    m_helpManager = 0;
-
 }
 
 bool MainWindow::init(QString *errorMessage)
@@ -310,15 +301,6 @@ void MainWindow::extensionsInitialized()
 
     readSettings();
     updateContext();
-
-    m_projectSelectorAction = new QAction(this);
-    m_projectSelectorAction->setCheckable(true);
-    m_projectSelectorAction->setEnabled(true);
-
-    m_sportSelector = new SportSelectorWidget(m_projectSelectorAction, this);
-
-    connect(m_projectSelectorAction, &QAction::triggered, m_sportSelector, &SportSelectorWidget::setVisible);
-    ModeManager::addProjectSelector(m_projectSelectorAction);
 
     emit m_coreImpl->coreAboutToOpen();
     // Delay restoreWindowState, since it is overridden by LayoutRequest event
@@ -584,12 +566,12 @@ void MainWindow::registerDefaultActions()
 
     // About IDE Action
     icon = QIcon::fromTheme(QLatin1String("help-about"));
-    tmpaction = new QAction(icon, tr("About &Athletic"), this);
+    tmpaction = new QAction(icon, tr("About &Bonaka"), this);
     tmpaction->setMenuRole(QAction::AboutRole);
-    cmd = ActionManager::registerAction(tmpaction, Constants::ABOUT_ATHLETIC);
+    cmd = ActionManager::registerAction(tmpaction, Constants::ABOUT_APP);
     mhelp->addAction(cmd, Constants::G_HELP_ABOUT);
     tmpaction->setEnabled(true);
-    connect(tmpaction, &QAction::triggered, this, &MainWindow::aboutAthletic);
+    connect(tmpaction, &QAction::triggered, this, &MainWindow::aboutApplication);
 
     //About Plugins Action
     tmpaction = new QAction(tr("About &Plugins..."), this);
@@ -603,7 +585,7 @@ void MainWindow::registerDefaultActions()
     if (!HostOsInfo::isMacHost()) { // doesn't have the "About" actions in the Help menu
         tmpaction = new QAction(this);
         tmpaction->setSeparator(true);
-        cmd = ActionManager::registerAction(tmpaction, "Athletic.Help.Sep.About");
+        cmd = ActionManager::registerAction(tmpaction, "App.Help.Sep.About");
         mhelp->addAction(cmd, Constants::G_HELP_ABOUT);
     }
 }
@@ -804,7 +786,7 @@ void MainWindow::updateContext()
 }
 
 
-void MainWindow::aboutAthletic()
+void MainWindow::aboutApplication()
 {
     if (!m_versionDialog) {
         m_versionDialog = new VersionDialog(this);

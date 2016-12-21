@@ -18,8 +18,8 @@
 #include <QNetworkProxy>
 #include <QtMsgHandler>
 
-#include "athletic.h"
-#include <athletic/athletic_version.h>
+#include "bonaka.h"
+#include <bonaka/bonaka_version.h>
 #include <extensionsystem/iplugin.h>
 #include <extensionsystem/pluginmanager.h>
 #include <extensionsystem/pluginspec.h>
@@ -29,10 +29,10 @@
 
 using namespace ExtensionSystem;
 
-const char appName[] = "Athletic";
+const char appName[] = "Bonaka";
 const char corePluginName[] = "Core";
 
-Q_LOGGING_CATEGORY(appLog, "athletic.app")
+Q_LOGGING_CATEGORY(appLog, "bonaka.app")
 
 static void displayError(const QString &t)
 {
@@ -62,7 +62,7 @@ static inline QStringList getPluginPaths()
 
     pluginPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
 
-    pluginPath += QLatin1String("/Athletic");
+    pluginPath += QLatin1String("/Bonaka");
     pluginPath += QLatin1String("/plugins");
 
     rc.push_back(pluginPath);
@@ -71,7 +71,7 @@ static inline QStringList getPluginPaths()
 }
 
 static const char *SHARE_PATH =
-        Utils::HostOsInfo::isMacHost() ? "/../Resources" : "/../share/athletic";
+        Utils::HostOsInfo::isMacHost() ? "/../Resources" : "/../share/bonaka";
 
 static void messageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
@@ -110,10 +110,10 @@ static void messageOutput(QtMsgType type, const QMessageLogContext &context, con
 
 int main(int argc, char **argv)
 {
-    QLoggingCategory::setFilterRules( QLatin1String("athletic.*.debug=true\n"
-                                                    "athletic.*.info=false\n"
-                                                    "athletic.*.warning=true\n"
-                                                    "athletic.*.critical=true") );
+    QLoggingCategory::setFilterRules( QLatin1String("bonaka.*.debug=true\n"
+                                                    "bonaka.*.info=false\n"
+                                                    "bonaka.*.warning=true\n"
+                                                    "bonaka.*.critical=true") );
 
     qInstallMessageHandler(messageOutput);
 
@@ -150,15 +150,15 @@ int main(int argc, char **argv)
     QSettings *settings = new QSettings(QSettings::IniFormat,
                                         QSettings::UserScope,
                                         QLatin1String(Core::Constants::APP_SETTINGS_STR),
-                                        QLatin1String("Athletic"));
+                                        QLatin1String("Bonaka"));
 
     QSettings *globalSettings = new QSettings(QSettings::IniFormat,
                                               QSettings::SystemScope,
                                               QLatin1String(Core::Constants::APP_SETTINGS_STR),
-                                              QLatin1String("Athletic"));
+                                              QLatin1String("Bonaka"));
 
     PluginManager pluginManager;
-    PluginManager::setPluginIID( QLatin1String("cloud.athletic.app.plugin") );
+    PluginManager::setPluginIID( QLatin1String("ru.bonaka.app.plugin") );
     PluginManager::setGlobalSettings(globalSettings);
     PluginManager::setSettings(settings);
 
@@ -175,14 +175,14 @@ int main(int argc, char **argv)
 
     foreach (QString locale, uiLanguages) {
         locale = QLocale(locale).name();
-        if (translator.load( QLatin1String("athletic_") + locale, creatorTrPath)) {
+        if (translator.load( QLatin1String("bonaka_") + locale, creatorTrPath)) {
             const QString &qtTrPath = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
             const QString &qtTrFile = QLatin1String("qt_") + locale;
             // Binary installer puts Qt tr files into creatorTrPath
             if (qtTranslator.load(qtTrFile, qtTrPath) || qtTranslator.load(qtTrFile, creatorTrPath)) {
                 app.installTranslator(&translator);
                 app.installTranslator(&qtTranslator);
-                app.setProperty("athletic_locale", locale);
+                app.setProperty("bonaka_locale", locale);
                 break;
             }
             translator.load(QString()); // unload()

@@ -19,34 +19,14 @@ namespace Internal {
 class EstimationMode : public Core::IMode
 {
     Q_OBJECT
-    Q_PROPERTY(int activePlugin READ activePlugin WRITE setActivePlugin NOTIFY activePluginChanged)
+
 public:
     EstimationMode();
     ~EstimationMode();
 
-    void activated();
-    void initPlugins();
-    int activePlugin() const { return m_activePlugin; }
-
-public slots:
-    void setActivePlugin(int pos)
-    {
-        if (m_activePlugin != pos) {
-            m_activePlugin = pos;
-            emit activePluginChanged(pos);
-        }
-    }
-    void pluginAdded(QObject *obj);
-
-signals:
-    void activePluginChanged(int pos);
-
 private:
-    void schedulePluginAdded(QObject*);
-
     QWidget *m_matchPage;
     QWidget *m_modeWidget;
-    int m_activePlugin;
 };
 
 } // Internal

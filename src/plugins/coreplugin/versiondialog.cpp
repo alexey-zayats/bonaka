@@ -1,7 +1,7 @@
 
 #include "versiondialog.h"
 
-#include <athletic/athletic_version.h>
+#include <bonaka/bonaka_version.h>
 #include <coreplugin/coreicons.h>
 #include <coreplugin/icore.h>
 #include <coreplugin/coreconstants.h>
@@ -26,7 +26,7 @@ VersionDialog::VersionDialog(QWidget *parent)
     if (Utils::HostOsInfo::isLinuxHost())
         setWindowIcon(Icons::LOGO_128.icon());
 
-    setWindowTitle(tr("About Athletic"));
+    setWindowTitle(tr("About Bonaka"));
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     QGridLayout *layout = new QGridLayout(this);
     layout->setSizeConstraint(QLayout::SetFixedSize);

@@ -122,11 +122,7 @@ public:
         IconsNavigationArrowsColor,
         IconsBuildHammerHandleColor,
         IconsBuildHammerHeadColor,
-        IconsModeScheduleActiveColor,
-        IconsModeCompetitionActiveColor,
-        IconsModeMatchActiveColor,
-        IconsModeAthleteActiveColor,
-        IconsModeHelpActiveColor,
+        IconsModeEstimationActiveColor,
 
         /* Code model Icons */
 
@@ -282,7 +278,7 @@ private:
     QPair<QColor, QString> readNamedColor(const QString &color) const;
 };
 
-UTILS_EXPORT Theme *athleticTheme();
+UTILS_EXPORT Theme *appTheme();
 
 } // namespace Utils
 

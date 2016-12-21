@@ -1,7 +1,7 @@
 #include "icore.h"
 #include "windowsupport.h"
 
-#include <athletic/athletic_version.h>
+#include <bonaka/bonaka_version.h>
 #include <extensionsystem/pluginmanager.h>
 
 #include <QSysInfo>
@@ -336,7 +336,7 @@ QPrinter *ICore::printer()
 
 QString ICore::userInterfaceLanguage()
 {
-    return qApp->property("athletic_locale").toString();
+    return qApp->property("bonaka_locale").toString();
 }
 
 QString ICore::resourcePath()
@@ -352,7 +352,7 @@ QString ICore::userResourcePath()
 {
     // Create application dir if it doesn't yet exist
     const QString configDir = QFileInfo(settings(QSettings::UserScope)->fileName()).path();
-    const QString urp = configDir + QLatin1String("/Athletic");
+    const QString urp = configDir + QLatin1String("/Bonaka");
 
     if (!QFileInfo::exists(urp + QLatin1Char('/'))) {
         QDir dir;
@@ -424,7 +424,7 @@ QString ICore::versionString()
 #ifdef APP_VERSION_DESCRIPTION_STR
     ideVersionDescription = tr(" (%1)").arg(QLatin1String(Constants::APP_VERSION_DESCRIPTION_STR));
 #endif
-    return tr("Athletic %1%2").arg(QLatin1String(Constants::APP_VERSION_LONG),
+    return tr("Bonaka %1%2").arg(QLatin1String(Constants::APP_VERSION_LONG),
                                      ideVersionDescription);
 }
 

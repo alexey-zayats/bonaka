@@ -20,7 +20,6 @@ QT_END_NAMESPACE
 namespace Core {
 
 class StatusBarWidget;
-class HelpManager;
 class ModeManager;
 class NavigationWidget;
 class RightPaneWidget;
@@ -38,7 +37,6 @@ class VersionDialog;
 class WindowSupport;
 class SystemSettings;
 class ProgressManagerPrivate;
-class SportSelectorWidget;
 
 class MainWindow : public Utils::AppMainWindow
 {
@@ -83,7 +81,7 @@ public slots:
                                     const QString &details = QString(),
                                     Id settingsId = Id(),
                                     QWidget *parent = 0);
-    void aboutAthletic();
+    void aboutApplication();
 
 protected:
     virtual void closeEvent(QCloseEvent *event);
@@ -122,7 +120,6 @@ private:
     ProgressManagerPrivate *m_progressManager;
     StatusBarManager *m_statusBarManager;
     ModeManager *m_modeManager;
-    HelpManager *m_helpManager;
     TabWidget *m_modeStack;
     NavigationWidget *m_navigationWidget;
 
@@ -151,7 +148,6 @@ private:
     QColor m_overrideColor;
     QList<std::function<bool()>> m_preCloseListeners;
 
-    SportSelectorWidget *m_sportSelector;
     QAction *m_projectSelectorAction;
 };
 

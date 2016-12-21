@@ -60,7 +60,7 @@ isEmpty(APP_BUILD_TREE) {
 	APP_BUILD_TREE ~= s,$$re_escape($$sub_dir)$,,
 }
 
-APP_TARGET   = "Athletic"
+APP_TARGET   = "Bonaka"
 
 osx {
 	APP_BUNDLE = $$APP_BUILD_TREE/$${APP_TARGET}.app

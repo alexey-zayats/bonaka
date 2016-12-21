@@ -2,7 +2,7 @@
 #include "command_p.h"
 #include <coreplugin/dialogs/shortcutsettings.h>
 
-#include <athletic/athletic_version.h>
+#include <bonaka/bonaka_version.h>
 
 #include <utils/fileutils.h>
 
