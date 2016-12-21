@@ -1439,7 +1439,7 @@ void EditorManagerPrivate::updateWindowTitleForDocument(IDocument *document, QWi
         windowTitle.append(dashSep);
     }
 
-    windowTitle.append(tr("Athletic"));
+    windowTitle.append(tr("Bonaka"));
     window->window()->setWindowTitle(windowTitle);
     window->window()->setWindowFilePath(filePath);
 

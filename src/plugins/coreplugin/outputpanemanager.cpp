@@ -47,7 +47,7 @@ static const int buttonBorderWidth = 3;
 
 static int numberAreaWidth()
 {
-    return athleticTheme()->widgetStyle() == Theme::StyleDefault ? 19 : 15;
+    return appTheme()->widgetStyle() == Theme::StyleDefault ? 19 : 15;
 }
 
 ////
@@ -162,7 +162,7 @@ OutputPaneManager::OutputPaneManager(QWidget *parent) :
     m_buttonsWidget->setLayout(new QHBoxLayout);
     m_buttonsWidget->layout()->setContentsMargins(5,0,0,0);
     m_buttonsWidget->layout()->setSpacing(
-            athleticTheme()->widgetStyle() == Theme::StyleDefault ? 4 : 9);
+            appTheme()->widgetStyle() == Theme::StyleDefault ? 4 : 9);
 }
 
 OutputPaneManager::~OutputPaneManager()
@@ -231,7 +231,7 @@ void OutputPaneManager::init()
     const int n = m_panes.size();
 
     int shortcutNumber = 1;
-    const Id baseId = "Athletic.Pane.";
+    const Id baseId = "App.Pane.";
     for (int i = 0; i != n; ++i) {
         IOutputPane *outPane = m_panes.at(i);
         /*const int idx = */m_outputWidgetPane->addWidget(outPane->outputWidget(this));
@@ -645,7 +645,7 @@ void OutputPaneToggleButton::paintEvent(QPaintEvent*)
     const bool hovered = !HostOsInfo::isMacHost() && (styleOption.state & QStyle::State_MouseOver);
 
     const QImage *image = 0;
-    if (athleticTheme()->widgetStyle() == Theme::StyleDefault) {
+    if (appTheme()->widgetStyle() == Theme::StyleDefault) {
         if (isDown())
             image = &panelButtonPressed;
         else if (isChecked())
@@ -663,23 +663,23 @@ void OutputPaneToggleButton::paintEvent(QPaintEvent*)
             c = Theme::BackgroundColorSelected;
 
         if (c != Theme::BackgroundColorDark)
-            p.fillRect(rect(), athleticTheme()->color(c));
+            p.fillRect(rect(), appTheme()->color(c));
     }
 
     if (m_flashTimer->state() == QTimeLine::Running)
     {
-        QColor c = athleticTheme()->color(Theme::OutputPaneButtonFlashColor);
+        QColor c = appTheme()->color(Theme::OutputPaneButtonFlashColor);
         c.setAlpha (m_flashTimer->currentFrame());
-        QRect r = (athleticTheme()->widgetStyle() == Theme::StyleFlat)
+        QRect r = (appTheme()->widgetStyle() == Theme::StyleFlat)
                   ? rect() : rect().adjusted(numberAreaWidth(), 1, -1, -1);
         p.fillRect(r, c);
     }
 
     p.setFont(font());
-    p.setPen(athleticTheme()->color(Theme::OutputPaneToggleButtonTextColorChecked));
+    p.setPen(appTheme()->color(Theme::OutputPaneToggleButtonTextColorChecked));
     p.drawText((numberAreaWidth() - numberWidth) / 2, baseLine, m_number);
     if (!isChecked())
-        p.setPen(athleticTheme()->color(Theme::OutputPaneToggleButtonTextColorUnchecked));
+        p.setPen(appTheme()->color(Theme::OutputPaneToggleButtonTextColorUnchecked));
     int leftPart = numberAreaWidth() + buttonBorderWidth;
     int labelWidth = 0;
     if (!m_badgeNumberLabel.text().isEmpty()) {
@@ -739,7 +739,7 @@ QSize OutputPaneManageButton::sizeHint() const
 void OutputPaneManageButton::paintEvent(QPaintEvent*)
 {
     QPainter p(this);
-    if (athleticTheme()->widgetStyle() == Theme::StyleDefault) {
+    if (appTheme()->widgetStyle() == Theme::StyleDefault) {
         static const QImage button(StyleHelper::dpiSpecificImageFile(QStringLiteral(":/core/images/panel_manage_button.png")));
         StyleHelper::drawCornerImage(button, &p, rect(), buttonBorderWidth, buttonBorderWidth, buttonBorderWidth, buttonBorderWidth);
     }
@@ -765,14 +765,14 @@ void BadgeLabel::paint(QPainter *p, int x, int y, bool isChecked)
     const QRectF rect(QRect(QPoint(x, y), m_size));
     p->save();
 
-    p->setBrush(athleticTheme()->color(isChecked? Theme::BadgeLabelBackgroundColorChecked
+    p->setBrush(appTheme()->color(isChecked? Theme::BadgeLabelBackgroundColorChecked
                                                : Theme::BadgeLabelBackgroundColorUnchecked));
     p->setPen(Qt::NoPen);
     p->setRenderHint(QPainter::Antialiasing, true);
     p->drawRoundedRect(rect, m_padding, m_padding, Qt::AbsoluteSize);
 
     p->setFont(m_font);
-    p->setPen(athleticTheme()->color(isChecked ? Theme::BadgeLabelTextColorChecked
+    p->setPen(appTheme()->color(isChecked ? Theme::BadgeLabelTextColorChecked
                                               : Theme::BadgeLabelTextColorUnchecked));
     p->drawText(rect, Qt::AlignCenter, m_text);
 

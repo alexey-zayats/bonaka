@@ -108,7 +108,7 @@ void OutputFormatter::initFormats()
     QFont boldFont;
     boldFont.setBold(true);
 
-    Theme *theme = athleticTheme();
+    Theme *theme = appTheme();
 
     // NormalMessageFormat
     d->formats[NormalMessageFormat].setFont(boldFont, QTextCharFormat::FontPropertiesSpecifiedOnly);

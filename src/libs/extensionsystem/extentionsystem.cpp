@@ -1,3 +1,3 @@
 #include "extensionsystem_global.h"
 
-Q_LOGGING_CATEGORY(extentionSystemLog, "athletic.lib.extensionsystem")
+Q_LOGGING_CATEGORY(extentionSystemLog, "bonaka.lib.extensionsystem")

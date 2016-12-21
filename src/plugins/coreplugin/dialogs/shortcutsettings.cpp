@@ -236,7 +236,7 @@ ShortcutSettingsWidget::ShortcutSettingsWidget(QWidget *parent)
     m_warningLabel->setTextFormat(Qt::RichText);
     QPalette palette = m_warningLabel->palette();
     palette.setColor(QPalette::Active, QPalette::WindowText,
-                     Utils::athleticTheme()->color(Utils::Theme::TextColorError));
+                     Utils::appTheme()->color(Utils::Theme::TextColorError));
     m_warningLabel->setPalette(palette);
     connect(m_warningLabel, &QLabel::linkActivated, this, &ShortcutSettingsWidget::showConflicts);
     vboxLayout->addWidget(m_warningLabel);
@@ -516,13 +516,13 @@ bool ShortcutSettingsWidget::markCollisions(ShortcutItem *item)
             }
             if (currentIsConflicting) {
                 currentItem->m_item->setForeground(
-                            2, Utils::athleticTheme()->color(Utils::Theme::TextColorError));
+                            2, Utils::appTheme()->color(Utils::Theme::TextColorError));
                 hasCollision = true;
             }
         }
     }
     item->m_item->setForeground(2, hasCollision
-                                ? Utils::athleticTheme()->color(Utils::Theme::TextColorError)
+                                ? Utils::appTheme()->color(Utils::Theme::TextColorError)
                                 : commandList()->palette().foreground());
     return hasCollision;
 }

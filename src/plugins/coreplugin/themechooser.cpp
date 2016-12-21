@@ -117,7 +117,7 @@ ThemeChooserPrivate::ThemeChooserPrivate(QWidget *widget)
     layout->addSpacerItem(horizontalSpacer);
     m_themeComboBox->setModel(m_themeListModel);
     const QList<ThemeEntry> themes = ThemeEntry::availableThemes();
-    const Id activeTheme = Id::fromString(athleticTheme()->id());
+    const Id activeTheme = Id::fromString(appTheme()->id());
     const int selected = Utils::indexOf(themes, Utils::equal(&ThemeEntry::id, activeTheme));
     m_themeListModel->setThemes(themes);
     if (selected >= 0)
@@ -151,7 +151,7 @@ void ThemeChooser::apply()
                                                    QLatin1String(Constants::DEFAULT_THEME)).toString();
     if (currentThemeId != themeId) {
         QMessageBox::information(ICore::mainWindow(), tr("Restart Required"),
-                                 tr("The theme change will take effect after a restart of Athletic."));
+                                 tr("The theme change will take effect after a restart of application."));
 
         // save filename of selected theme in global config
         settings->setValue(QLatin1String(Constants::SETTINGS_THEME), themeId);

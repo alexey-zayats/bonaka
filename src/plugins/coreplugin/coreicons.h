@@ -75,20 +75,10 @@ CORE_EXPORT extern const Utils::Icon BOUNDING_RECT;
 CORE_EXPORT extern const Utils::Icon EYE_OPEN_TOOLBAR;
 CORE_EXPORT extern const Utils::Icon EYE_CLOSED_TOOLBAR;
 
-CORE_EXPORT extern const Utils::Icon MODE_DESIGN_CLASSIC;
-CORE_EXPORT extern const Utils::Icon MODE_DESIGN_FLAT;
-CORE_EXPORT extern const Utils::Icon MODE_DESIGN_FLAT_ACTIVE;
-
 CORE_EXPORT extern const Utils::Icon LOGO_32;
 CORE_EXPORT extern const Utils::Icon LOGO_64;
 CORE_EXPORT extern const Utils::Icon LOGO_128;
 CORE_EXPORT extern const Utils::Icon LOGO_256;
-
-CORE_EXPORT extern const Utils::Icon OLYMPIC_CLASSIC;
-CORE_EXPORT extern const Utils::Icon OLYMPIC_FLAT;
-CORE_EXPORT extern const Utils::Icon OLYMPIC_FLAT_ACTIVE;
-
-
 } // namespace Icons
 } // namespace Core
 

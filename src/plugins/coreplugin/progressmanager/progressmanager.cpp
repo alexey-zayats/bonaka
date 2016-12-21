@@ -311,7 +311,7 @@ void ProgressManagerPrivate::init()
     p.fill(Qt::transparent);
     toggleProgressView->setIcon(QIcon(p));
     Command *cmd = ActionManager::registerAction(toggleProgressView,
-                                                 "Athletic.ToggleProgressDetails");
+                                                 "App.ToggleProgressDetails");
     cmd->setDefaultKeySequence(QKeySequence(HostOsInfo::isMacHost()
                                                ? tr("Ctrl+Shift+0")
                                                : tr("Alt+Shift+0")));
@@ -679,9 +679,9 @@ ToggleButton::ToggleButton(QWidget *parent)
     : QToolButton(parent)
 {
     setToolButtonStyle(Qt::ToolButtonIconOnly);
-    if (athleticTheme()->widgetStyle() == Theme::StyleFlat) {
+    if (appTheme()->widgetStyle() == Theme::StyleFlat) {
         QPalette p = palette();
-        p.setBrush(QPalette::Base, athleticTheme()->color(Theme::ToggleButtonBackgroundColor));
+        p.setBrush(QPalette::Base, appTheme()->color(Theme::ToggleButtonBackgroundColor));
         setPalette(p);
     }
 }

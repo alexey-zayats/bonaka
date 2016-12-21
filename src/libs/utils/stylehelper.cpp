@@ -123,7 +123,7 @@ void StyleHelper::setBaseColor(const QColor &newcolor)
 {
     m_requestedBaseColor = newcolor;
 
-    const QColor themeBaseColor = athleticTheme()->color(Theme::PanelStatusBarBackgroundColor);
+    const QColor themeBaseColor = appTheme()->color(Theme::PanelStatusBarBackgroundColor);
     const QColor defaultBaseColor = QColor(DEFAULT_BASE_COLOR);
     QColor color;
 
@@ -288,10 +288,10 @@ void StyleHelper::drawArrow(QStyle::PrimitiveElement element, QPainter *painter,
         };
 
         if (!enabled) {
-            drawCommonStyleArrow(image.rect(), athleticTheme()->color(Theme::IconsDisabledColor));
+            drawCommonStyleArrow(image.rect(), appTheme()->color(Theme::IconsDisabledColor));
         } else {
             drawCommonStyleArrow(image.rect().translated(0, devicePixelRatio), toolBarDropShadowColor());
-            drawCommonStyleArrow(image.rect(), athleticTheme()->color(Theme::IconsBaseColor));
+            drawCommonStyleArrow(image.rect(), appTheme()->color(Theme::IconsBaseColor));
         }
         painter.end();
         pixmap = QPixmap::fromImage(image);

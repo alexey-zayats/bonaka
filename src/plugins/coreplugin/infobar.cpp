@@ -176,8 +176,8 @@ void InfoBarDisplay::update()
         QFrame *infoWidget = new QFrame;
 
         QPalette pal;
-        pal.setColor(QPalette::Window, athleticTheme()->color(Theme::InfoBarBackground));
-        pal.setColor(QPalette::WindowText, athleticTheme()->color(Theme::InfoBarText));
+        pal.setColor(QPalette::Window, appTheme()->color(Theme::InfoBarBackground));
+        pal.setColor(QPalette::WindowText, appTheme()->color(Theme::InfoBarText));
 
         infoWidget->setPalette(pal);
         infoWidget->setFrameStyle(QFrame::Panel | QFrame::Raised);

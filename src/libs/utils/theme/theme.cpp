@@ -10,7 +10,7 @@
 
 namespace Utils {
 
-static Theme *m_athleticTheme = 0;
+static Theme *m_appTheme = 0;
 
 ThemePrivate::ThemePrivate()
     : widgetStyle(Theme::StyleDefault)
@@ -22,17 +22,17 @@ ThemePrivate::ThemePrivate()
     flags.resize         (m.enumerator(m.indexOfEnumerator("Flag")).keyCount());
 }
 
-Theme *athleticTheme()
+Theme *appTheme()
 {
-    return m_athleticTheme;
+    return m_appTheme;
 }
 
-void setAthleticTheme(Theme *theme)
+void setTheme(Theme *theme)
 {
-    if (m_athleticTheme == theme)
+    if (m_appTheme == theme)
         return;
-    delete m_athleticTheme;
-    m_athleticTheme = theme;
+    delete m_appTheme;
+    m_appTheme = theme;
 }
 
 Theme::Theme(const QString &id, QObject *parent)

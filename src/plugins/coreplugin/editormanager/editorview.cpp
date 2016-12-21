@@ -242,14 +242,14 @@ void EditorView::paintEvent(QPaintEvent *)
     QPainter painter(this);
 
     QRect rect = m_container->geometry();
-    if (athleticTheme()->widgetStyle() == Theme::StyleDefault) {
+    if (appTheme()->widgetStyle() == Theme::StyleDefault) {
         painter.setRenderHint(QPainter::Antialiasing, true);
         painter.setPen(Qt::NoPen);
-        painter.setBrush(athleticTheme()->color(Theme::EditorPlaceholderColor));
+        painter.setBrush(appTheme()->color(Theme::EditorPlaceholderColor));
         const int r = 3;
         painter.drawRoundedRect(rect.adjusted(r , r, -r, -r), r * 2, r * 2);
     } else {
-        painter.fillRect(rect, athleticTheme()->color(Theme::EditorPlaceholderColor));
+        painter.fillRect(rect, appTheme()->color(Theme::EditorPlaceholderColor));
     }
 }
 

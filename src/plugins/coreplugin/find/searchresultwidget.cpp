@@ -67,10 +67,10 @@ SearchResultWidget::SearchResultWidget(QWidget *parent) :
 
     QFrame *topWidget = new QFrame;
     QPalette pal;
-    pal.setColor(QPalette::Window,     athleticTheme()->color(Theme::InfoBarBackground));
-    pal.setColor(QPalette::WindowText, athleticTheme()->color(Theme::InfoBarText));
+    pal.setColor(QPalette::Window,     appTheme()->color(Theme::InfoBarBackground));
+    pal.setColor(QPalette::WindowText, appTheme()->color(Theme::InfoBarText));
     topWidget->setPalette(pal);
-    if (athleticTheme()->flag(Theme::DrawSearchResultWidgetFrame)) {
+    if (appTheme()->flag(Theme::DrawSearchResultWidgetFrame)) {
         topWidget->setFrameStyle(QFrame::Panel | QFrame::Raised);
         topWidget->setLineWidth(1);
     }
@@ -94,9 +94,9 @@ SearchResultWidget::SearchResultWidget(QWidget *parent) :
     topLayout->addWidget(m_topReplaceWidget);
 
     m_messageWidget = new QFrame;
-    pal.setColor(QPalette::WindowText, athleticTheme()->color(Theme::CanceledSearchTextColor));
+    pal.setColor(QPalette::WindowText, appTheme()->color(Theme::CanceledSearchTextColor));
     m_messageWidget->setPalette(pal);
-    if (athleticTheme()->flag(Theme::DrawSearchResultWidgetFrame)) {
+    if (appTheme()->flag(Theme::DrawSearchResultWidgetFrame)) {
         m_messageWidget->setFrameStyle(QFrame::Panel | QFrame::Raised);
         m_messageWidget->setLineWidth(1);
     }

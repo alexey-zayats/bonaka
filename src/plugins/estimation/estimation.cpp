@@ -1,6 +1,9 @@
 
 #include "estimation.h"
 #include "estimationmode.h"
+#include "estimationconstants.h"
+
+#include <coreplugin/modemanager.h>
 
 using namespace Estimation;
 using namespace Estimation::Internal;
@@ -23,13 +26,12 @@ bool EstimationPlugin::initialize(const QStringList &arguments, QString *errorMe
 
     m_estimationMode = new EstimationMode;
     addAutoReleasedObject (m_estimationMode);
-
     return true;
 }
 
 void EstimationPlugin::extensionsInitialized()
 {
-    m_estimationMode->initPlugins();
+    ModeManager::activateMode(Id(Constants::MODE_ESTIMATION));
 }
 
 bool EstimationPlugin::delayedInitialize()

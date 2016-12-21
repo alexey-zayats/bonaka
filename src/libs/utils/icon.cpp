@@ -39,7 +39,7 @@ static MasksAndColors masksAndColors(const Icon &icon, int dpr)
     MasksAndColors result;
     for (const IconMaskAndColor &i: icon) {
         const QString &fileName = i.first;
-        const QColor color = athleticTheme()->color(i.second);
+        const QColor color = appTheme()->color(i.second);
         const QString dprFileName = StyleHelper::availableImageResolutions(i.first).contains(dpr) ?
                     StyleHelper::imageFileWithResolution(fileName, dpr) : fileName;
         result.append(qMakePair(QPixmap(dprFileName), color));
@@ -165,7 +165,7 @@ QIcon Icon::icon() const
             const QPixmap combinedMask = Utils::combinedMask(masks, m_style);
             result.addPixmap(masksToIcon(masks, combinedMask, m_style));
 
-            const QColor disabledColor = athleticTheme()->color(Theme::IconsDisabledColor);
+            const QColor disabledColor = appTheme()->color(Theme::IconsDisabledColor);
             result.addPixmap(maskToColorAndAlpha(combinedMask, disabledColor), QIcon::Disabled);
         }
         return result;
@@ -194,7 +194,7 @@ QString Icon::imageFileName() const
 QIcon Icon::sideBarIcon(const Icon &classic, const Icon &flat)
 {
     QIcon result;
-    if (athleticTheme()->flag(Theme::FlatSideBarIcons)) {
+    if (appTheme()->flag(Theme::FlatSideBarIcons)) {
         result = flat.icon();
     } else {
         const QPixmap pixmap = classic.pixmap();
@@ -211,7 +211,7 @@ QIcon Icon::sideBarIcon(const Icon &classic, const Icon &flat)
 QIcon Icon::modeIcon(const Icon &classic, const Icon &flat, const Icon &flatActive)
 {
     QIcon result = sideBarIcon(classic, flat);
-    if (athleticTheme()->flag(Theme::FlatSideBarIcons))
+    if (appTheme()->flag(Theme::FlatSideBarIcons))
         result.addPixmap(flatActive.pixmap(), QIcon::Active);
     return result;
 }

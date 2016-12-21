@@ -73,8 +73,8 @@ FindToolBar::FindToolBar(FindPlugin *plugin, CurrentDocumentFind *currentDocumen
     m_ui.findEdit->setButtonVisible(Utils::LineEdit::Left, true);
     m_ui.findEdit->setFiltering(true);
     m_ui.findEdit->setPlaceholderText(QString());
-    m_ui.findEdit->setOkColor(Utils::athleticTheme()->color(Utils::Theme::TextColorNormal));
-    m_ui.findEdit->setErrorColor(Utils::athleticTheme()->color(Utils::Theme::TextColorError));
+    m_ui.findEdit->setOkColor(Utils::appTheme()->color(Utils::Theme::TextColorNormal));
+    m_ui.findEdit->setErrorColor(Utils::appTheme()->color(Utils::Theme::TextColorError));
     m_ui.findEdit->button(Utils::LineEdit::Left)->setFocusPolicy(Qt::TabFocus);
     m_ui.findEdit->setValidationFunction([this](Utils::LineEdit *, QString *) {
                                              return m_lastResult != IFindSupport::NotFound;

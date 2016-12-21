@@ -1,5 +1,5 @@
-#ifndef ATHLETIC_OSSPECIFICASPECTS_H
-#define ATHLETIC_OSSPECIFICASPECTS_H
+#ifndef OSSPECIFICASPECTS_H
+#define OSSPECIFICASPECTS_H
 
 #include "utils_global.h"
 
@@ -42,4 +42,4 @@ private:
 
 } // namespace Utils
 
-#endif // Include guard.
+#endif // OSSPECIFICASPECTS_H

@@ -216,7 +216,7 @@ void ManhattanStyle::unpolish(QApplication *app)
 
 QPalette panelPalette(const QPalette &oldPalette, bool lightColored = false)
 {
-    QColor color = athleticTheme()->color(lightColored ? Theme::PanelTextColorDark
+    QColor color = appTheme()->color(lightColored ? Theme::PanelTextColorDark
                                                       : Theme::PanelTextColorLight);
     QPalette pal = oldPalette;
     pal.setBrush(QPalette::All, QPalette::WindowText, color);
@@ -225,7 +225,7 @@ QPalette panelPalette(const QPalette &oldPalette, bool lightColored = false)
     if (lightColored)
         color.setAlpha(100);
     else
-        color = athleticTheme()->color(Theme::IconsDisabledColor);
+        color = appTheme()->color(Theme::IconsDisabledColor);
     pal.setBrush(QPalette::Disabled, QPalette::WindowText, color);
     pal.setBrush(QPalette::Disabled, QPalette::ButtonText, color);
     pal.setBrush(QPalette::Disabled, QPalette::Foreground, color);
@@ -417,7 +417,7 @@ void ManhattanStyle::drawPrimitive(PrimitiveElement element, const QStyleOption 
 
     switch (element) {
     case PE_IndicatorDockWidgetResizeHandle:
-        painter->fillRect(option->rect, athleticTheme()->color(Theme::DockWidgetResizeHandleColor));
+        painter->fillRect(option->rect, appTheme()->color(Theme::DockWidgetResizeHandleColor));
         break;
     case PE_FrameDockWidget:
         QCommonStyle::drawPrimitive(element, option, painter, widget);
@@ -428,7 +428,7 @@ void ManhattanStyle::drawPrimitive(PrimitiveElement element, const QStyleOption 
 
             // Fill the line edit background
             QRectF backgroundRect = option->rect;
-            if (Utils::athleticTheme()->widgetStyle() == Utils::Theme::StyleDefault) {
+            if (Utils::appTheme()->widgetStyle() == Utils::Theme::StyleDefault) {
                 backgroundRect.adjust(1, 1, -1, -1);
                 painter->setBrushOrigin(backgroundRect.topLeft());
                 painter->fillRect(backgroundRect, option->palette.base());
@@ -467,16 +467,16 @@ void ManhattanStyle::drawPrimitive(PrimitiveElement element, const QStyleOption 
                 bool pressed = option->state & State_Sunken || option->state & State_On;
                 painter->setPen(StyleHelper::sidebarShadow());
                 if (pressed) {
-                    const QColor shade = athleticTheme()->color(Theme::ToolButtonSelectedColor);
+                    const QColor shade = appTheme()->color(Theme::ToolButtonSelectedColor);
                     painter->fillRect(rect, shade);
-                    if (athleticTheme()->widgetStyle() == Theme::StyleDefault) {
+                    if (appTheme()->widgetStyle() == Theme::StyleDefault) {
                         const QRectF borderRect = QRectF(rect).adjusted(0.5, 0.5, -0.5, -0.5);
                         painter->drawLine(borderRect.topLeft() + QPointF(1, 0), borderRect.topRight() - QPointF(1, 0));
                         painter->drawLine(borderRect.topLeft(), borderRect.bottomLeft());
                         painter->drawLine(borderRect.topRight(), borderRect.bottomRight());
                     }
                 } else if (option->state & State_Enabled && option->state & State_MouseOver) {
-                    painter->fillRect(rect, athleticTheme()->color(Theme::ToolButtonHoverColor));
+                    painter->fillRect(rect, appTheme()->color(Theme::ToolButtonHoverColor));
                 } else if (widget && widget->property("highlightWidget").toBool()) {
                     QColor shade(0, 0, 0, 128);
                     painter->fillRect(rect, shade);
@@ -497,7 +497,7 @@ void ManhattanStyle::drawPrimitive(PrimitiveElement element, const QStyleOption 
 
     case PE_PanelStatusBar:
         {
-            if (athleticTheme()->widgetStyle() == Theme::StyleDefault) {
+            if (appTheme()->widgetStyle() == Theme::StyleDefault) {
                 painter->save();
                 QLinearGradient grad = StyleHelper::statusBarGradient(rect);
                 painter->fillRect(rect, grad);
@@ -612,7 +612,7 @@ void ManhattanStyle::drawControl(ControlElement element, const QStyleOption *opt
             const bool enabled = mbi->state & State_Enabled;
             QStyleOptionMenuItem item = *mbi;
             item.rect = mbi->rect;
-            const QColor color = athleticTheme()->color(enabled
+            const QColor color = appTheme()->color(enabled
                                                        ? Theme::MenuItemTextColorNormal
                                                        : Theme::MenuItemTextColorDisabled);
             if (color.isValid()) {
@@ -631,7 +631,7 @@ void ManhattanStyle::drawControl(ControlElement element, const QStyleOption *opt
             const bool act = mbi->state & (State_Sunken | State_Selected);
             const bool dis = !(mbi->state & State_Enabled);
 
-            if (athleticTheme()->flag(Theme::FlatMenuBar))
+            if (appTheme()->flag(Theme::FlatMenuBar))
                 painter->fillRect(option->rect, StyleHelper::baseColor());
             else
                 StyleHelper::menuGradient(painter, option->rect, option->rect);
@@ -640,15 +640,15 @@ void ManhattanStyle::drawControl(ControlElement element, const QStyleOption *opt
             item.rect = mbi->rect;
             QPalette pal = mbi->palette;
             pal.setBrush(QPalette::ButtonText, dis
-                ? athleticTheme()->color(Theme::MenuBarItemTextColorDisabled)
-                : athleticTheme()->color(Theme::MenuBarItemTextColorNormal));
+                ? appTheme()->color(Theme::MenuBarItemTextColorDisabled)
+                : appTheme()->color(Theme::MenuBarItemTextColorNormal));
             item.palette = pal;
             QCommonStyle::drawControl(element, &item, painter, widget);
 
             if (act) {
                 // Fill|
-                if (athleticTheme()->flag(Theme::FlatMenuBar)) {
-                    painter->fillRect(option->rect, athleticTheme()->color(Theme::ToolButtonHoverColor));
+                if (appTheme()->flag(Theme::FlatMenuBar)) {
+                    painter->fillRect(option->rect, appTheme()->color(Theme::ToolButtonHoverColor));
                 } else {
                     QColor baseColor = StyleHelper::baseColor();
                     QLinearGradient grad(option->rect.topLeft(), option->rect.bottomLeft());
@@ -714,13 +714,13 @@ void ManhattanStyle::drawControl(ControlElement element, const QStyleOption *opt
                 }
                 text.prepend(option->fontMetrics.elidedText(cb->currentText, Qt::ElideRight, elideWidth));
 
-                if (athleticTheme()->flag(Theme::ComboBoxDrawTextShadow)
+                if (appTheme()->flag(Theme::ComboBoxDrawTextShadow)
                     && (option->state & State_Enabled))
                 {
                     painter->setPen(StyleHelper::toolBarDropShadowColor());
                     painter->drawText(editRect.adjusted(1, 0, -1, 0), Qt::AlignLeft | Qt::AlignVCenter, text);
                 }
-                painter->setPen(athleticTheme()->color((option->state & State_Enabled)
+                painter->setPen(appTheme()->color((option->state & State_Enabled)
                                                       ? Theme::ComboBoxTextColor
                                                       : Theme::IconsDisabledColor));
                 painter->drawText(editRect.adjusted(1, 0, -1, 0), Qt::AlignLeft | Qt::AlignVCenter, text);
@@ -766,7 +766,7 @@ void ManhattanStyle::drawControl(ControlElement element, const QStyleOption *opt
         break;
 
     case CE_MenuBarEmptyArea: {
-            if (!athleticTheme()->flag(Theme::FlatMenuBar)) {
+            if (!appTheme()->flag(Theme::FlatMenuBar)) {
                 StyleHelper::menuGradient(painter, option->rect, option->rect);
                 painter->save();
                 painter->setPen(StyleHelper::borderColor());
@@ -795,14 +795,14 @@ void ManhattanStyle::drawControl(ControlElement element, const QStyleOption *opt
 
             bool drawLightColored = lightColored(widget);
             // draws the background of the 'Type hierarchy', 'Projects' headers
-            if (athleticTheme()->widgetStyle() == Theme::StyleFlat)
+            if (appTheme()->widgetStyle() == Theme::StyleFlat)
                 painter->fillRect(rect, StyleHelper::baseColor(drawLightColored));
             else if (horizontal)
                 StyleHelper::horizontalGradient(painter, gradientSpan, rect, drawLightColored);
             else
                 StyleHelper::verticalGradient(painter, gradientSpan, rect, drawLightColored);
 
-            if (athleticTheme()->flag(Theme::DrawToolBarHighlights)) {
+            if (appTheme()->flag(Theme::DrawToolBarHighlights)) {
                 if (!drawLightColored)
                     painter->setPen(StyleHelper::borderColor());
                 else
@@ -812,9 +812,9 @@ void ManhattanStyle::drawControl(ControlElement element, const QStyleOption *opt
                     // Note: This is a hack to determine if the
                     // toolbar should draw the top or bottom outline
                     // (needed for the find toolbar for instance)
-                    const QColor hightLight = athleticTheme()->widgetStyle() == Theme::StyleDefault
+                    const QColor hightLight = appTheme()->widgetStyle() == Theme::StyleDefault
                             ? StyleHelper::sidebarHighlight()
-                            : athleticTheme()->color(Theme::ToolBarSeparatorColor);
+                            : appTheme()->color(Theme::ToolBarSeparatorColor);
                     const QColor borderColor = drawLightColored
                             ? QColor(255, 255, 255, 180) : hightLight;
                     if (widget && widget->property("topBorder").toBool()) {
@@ -993,9 +993,9 @@ void ManhattanStyle::drawComplexControl(ComplexControl control, const QStyleOpti
 void ManhattanStyle::drawButtonSeparator(QPainter *painter, const QRect &rect, bool reverse) const
 {
     const QRectF borderRect = QRectF(rect).adjusted(0.5, 0.5, -0.5, -0.5);
-    if (athleticTheme()->widgetStyle() == Theme::StyleFlat) {
+    if (appTheme()->widgetStyle() == Theme::StyleFlat) {
         const int margin = 3;
-        painter->setPen(athleticTheme()->color(Theme::ToolBarSeparatorColor));
+        painter->setPen(appTheme()->color(Theme::ToolBarSeparatorColor));
         painter->drawLine(borderRect.topRight() + QPointF(0, margin),
                           borderRect.bottomRight() - QPointF(0, margin));
     } else {

@@ -140,7 +140,7 @@ void GeneralSettings::setLanguage(const QString &locale)
     QSettings *settings = ICore::settings();
     if (settings->value(QLatin1String("General/OverrideLanguage")).toString() != locale)
         QMessageBox::information(ICore::mainWindow(), tr("Restart Required"),
-                                 tr("The language change will take effect after a restart of Athletic."));
+                                 tr("The language change will take effect after a restart of application."));
 
     if (locale.isEmpty())
         settings->remove(QLatin1String("General/OverrideLanguage"));

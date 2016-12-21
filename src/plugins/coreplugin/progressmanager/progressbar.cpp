@@ -223,7 +223,7 @@ void ProgressBar::paintEvent(QPaintEvent *)
         p.setPen(StyleHelper::sidebarShadow());
         p.drawLine(innerRect.topLeft(), innerRect.topRight());
 
-        if (athleticTheme()->flag(Theme::DrawToolBarHighlights)) {
+        if (appTheme()->flag(Theme::DrawToolBarHighlights)) {
             p.setPen(StyleHelper::sidebarHighlight());
             p.drawLine(innerRect.topLeft() + QPointF(1, 1), innerRect.topRight() + QPointF(0, 1));
         }
@@ -245,7 +245,7 @@ void ProgressBar::paintEvent(QPaintEvent *)
         p.setPen(QColor(0, 0, 0, 120));
         p.drawText(textRect, alignment | Qt::AlignBottom, elidedtitle);
         p.translate(0, -1);
-        p.setPen(athleticTheme()->color(Theme::ProgressBarTitleColor));
+        p.setPen(appTheme()->color(Theme::ProgressBarTitleColor));
         p.drawText(textRect, alignment | Qt::AlignBottom, elidedtitle);
         p.translate(0, 1);
     }
@@ -267,12 +267,12 @@ void ProgressBar::paintEvent(QPaintEvent *)
         themeColor = Theme::ProgressBarColorError;
     else if (m_finished)
         themeColor = Theme::ProgressBarColorFinished;
-    const QColor c = athleticTheme()->color(themeColor);
+    const QColor c = appTheme()->color(themeColor);
 
     //draw the progress bar
-    if (athleticTheme()->widgetStyle() == Theme::StyleFlat) {
+    if (appTheme()->widgetStyle() == Theme::StyleFlat) {
         p.fillRect(rect.adjusted(2, 2, -2, -2),
-                   athleticTheme()->color(Theme::ProgressBarBackgroundColor));
+                   appTheme()->color(Theme::ProgressBarBackgroundColor));
         p.fillRect(inner, c);
     } else {
         const static QImage bar(StyleHelper::dpiSpecificImageFile(
@@ -311,7 +311,7 @@ void ProgressBar::paintEvent(QPaintEvent *)
             const bool hover = m_cancelRect.contains(mapFromGlobal(QCursor::pos()));
             const QRectF cancelVisualRect(m_cancelRect.adjusted(0, 1, -2, -2));
             int intensity = hover ? 90 : 70;
-            if (athleticTheme()->widgetStyle() != Theme::StyleFlat) {
+            if (appTheme()->widgetStyle() != Theme::StyleFlat) {
                 QLinearGradient grad(cancelVisualRect.topLeft(), cancelVisualRect.bottomLeft());
                 QColor buttonColor(intensity, intensity, intensity, 255);
                 grad.setColorAt(0, buttonColor.lighter(130));

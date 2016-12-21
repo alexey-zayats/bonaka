@@ -270,7 +270,7 @@ void FutureProgress::mousePressEvent(QMouseEvent *event)
 void FutureProgress::paintEvent(QPaintEvent *)
 {
     QPainter p(this);
-    if (athleticTheme()->widgetStyle() == Theme::StyleFlat) {
+    if (appTheme()->widgetStyle() == Theme::StyleFlat) {
         p.fillRect(rect(), StyleHelper::baseColor());
     } else {
       QLinearGradient grad = StyleHelper::statusBarGradient(rect());

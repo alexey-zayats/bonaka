@@ -133,7 +133,7 @@ void WindowList::addWindow(QWidget *window)
 #endif
 
     m_windows.append(window);
-    Id id = Id("Athletic.Window.").withSuffix(m_windows.size());
+    Id id = Id("App.Window.").withSuffix(m_windows.size());
     m_windowActionIds.append(id);
     auto action = new QAction(window->windowTitle(), 0);
     m_windowActions.append(action);
@@ -161,7 +161,7 @@ void WindowList::updateTitle(QWidget *window)
 {
     int index = m_windows.indexOf(window);
     QString title = window->windowTitle();
-    if (title.endsWith(QStringLiteral("- Athletic")))
+    if (title.endsWith(QStringLiteral("- Bonaka")))
         title.chop(12);
     m_windowActions.at(index)->setText(title.trimmed());
 }

@@ -131,7 +131,7 @@ void ModeManager::objectAdded(QObject *obj)
     d->m_modeStack->setTabEnabled(index, mode->isEnabled());
 
     // Register mode shortcut
-    const Id actionId = mode->id().withPrefix("Athletic.Mode.");
+    const Id actionId = mode->id().withPrefix("App.Mode.");
     QAction *action = new QAction(tr("Switch to <b>%1</b> mode").arg(mode->displayName()), this);
     Command *cmd = ActionManager::registerAction(action, actionId);
 
