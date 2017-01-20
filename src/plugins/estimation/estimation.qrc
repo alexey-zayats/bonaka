@@ -1,8 +1,0 @@
-<RCC>
-	<qresource prefix="/estimation">
-	<file>images/mode_estimation_mask.png</file>
-	<file>images/mode_estimation_mask@2x.png</file>
-	<file>images/mode_estimation.png</file>
-	<file>images/mode_estimation@2x.png</file>
-	</qresource>
-</RCC>
