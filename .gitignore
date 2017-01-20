@@ -1,3 +1,9 @@
 build/
 
 *.user
+
+share/database/unix/.pgenv
+
+share/database/unix/.pgpass
+
+share/database/unix/.psqlrc

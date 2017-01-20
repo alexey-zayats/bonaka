@@ -5,4 +5,4 @@ SUBDIRS  = \
 	utils \
 	extensionsystem \
 	widgets \
-
+#	entity \
