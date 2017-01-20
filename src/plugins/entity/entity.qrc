@@ -1,0 +1,8 @@
+<RCC>
+	<qresource prefix="/entity">
+	<file>images/mode_entity_mask.png</file>
+	<file>images/mode_entity_mask@2x.png</file>
+	<file>images/mode_entity.png</file>
+	<file>images/mode_entity@2x.png</file>
+	</qresource>
+</RCC>
