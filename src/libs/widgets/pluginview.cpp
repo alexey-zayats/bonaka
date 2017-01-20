@@ -294,7 +294,7 @@ PluginView::PluginView(QWidget *parent)
     m_categoryView->setSelectionMode(QAbstractItemView::SingleSelection);
     m_categoryView->setSelectionBehavior(QAbstractItemView::SelectRows);
 
-    m_model = new TreeModel(this);
+    m_model = new TreeModel<TreeItem, CollectionItem, PluginItem>(this);
     m_model->setHeader(QStringList() << tr("Name") << tr("Load") << tr("Version") << tr("Vendor"));
 
     m_sortModel = new CategorySortFilterModel(this);
@@ -435,7 +435,7 @@ bool PluginView::setPluginsEnabled(const QSet<PluginSpec *> &plugins, bool enabl
 
     QSet<PluginSpec *> affectedPlugins = plugins + additionalPlugins;
     foreach (PluginSpec *spec, affectedPlugins) {
-        Internal::PluginItem *item = m_model->findItemAtLevel<Internal::PluginItem *>(2, [spec](Internal::PluginItem *item) {
+        PluginItem *item = m_model->findItemAtLevel<2>([spec](PluginItem *item) {
                 return item->m_spec == spec;
         });
         spec->setEnabledBySettings(enable);

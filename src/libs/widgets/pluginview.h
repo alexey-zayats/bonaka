@@ -2,6 +2,7 @@
 #define PLUGINVIEW_H
 
 #include "widgets_global.h"
+#include <utils/treemodel.h>
 
 #include <QWidget>
 #include <QSet>
@@ -13,7 +14,6 @@ QT_END_NAMESPACE
 
 namespace Utils {
 class TreeItem;
-class TreeModel;
 class TreeView;
 } // namespace Utils
 
@@ -51,7 +51,7 @@ private:
     bool setPluginsEnabled(const QSet<ExtensionSystem::PluginSpec *> &plugins, bool enable);
 
     Utils::TreeView *m_categoryView;
-    Utils::TreeModel *m_model;
+    Utils::TreeModel<Utils::TreeItem, Internal::CollectionItem, Internal::PluginItem> *m_model;
     QSortFilterProxyModel *m_sortModel;
 
     friend class Internal::CollectionItem;
