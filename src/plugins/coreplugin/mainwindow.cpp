@@ -83,7 +83,6 @@ MainWindow::MainWindow() :
                                                QLatin1String("Bonaka"),
                                                this)),
     m_windowSupport(0),
-//    m_editorManager(0),
     m_progressManager(new ProgressManagerPrivate),
     m_statusBarManager(0),
     m_modeManager(0),

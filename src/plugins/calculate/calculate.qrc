@@ -1,0 +1,12 @@
+<RCC>
+	<qresource prefix="/calculate">
+	<file>images/mode_calculate_mask.png</file>
+	<file>images/mode_calculate_mask@2x.png</file>
+	<file>images/mode_calculate.png</file>
+	<file>images/mode_calculate@2x.png</file>
+        <file>reference/waterboiler.txt</file>
+        <file>reference/steamboiler.txt</file>
+        <file>reference/heating-period.txt</file>
+        <file>reference/scumkind.txt</file>
+	</qresource>
+</RCC>
