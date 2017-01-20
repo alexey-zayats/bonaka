@@ -8,6 +8,7 @@
 #include "actionmanager/actionmanager.h"
 #include "find/findplugin.h"
 #include "modemanager.h"
+// #include "entity/entity.h"
 
 #include <utils/algorithm.h>
 #include <utils/stringutils.h>
@@ -24,6 +25,7 @@
 
 using namespace Core;
 using namespace Core::Internal;
+// using namespace Entity;
 using namespace Utils;
 
 Q_LOGGING_CATEGORY(corepluginLog, "bonaka.plugins.coreplugin")
@@ -95,6 +97,7 @@ bool CorePlugin::initialize(const QStringList &arguments, QString *errorMessage)
     }
     new ActionManager(this);
     Theme::initialPalette();
+    // Connection::init();
     parseArguments(arguments);
     return m_mainWindow->init(errorMessage);
 }

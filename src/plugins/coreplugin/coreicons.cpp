@@ -73,10 +73,12 @@ const Icon BOUNDING_RECT({{QLatin1String(":/core/images/boundingrect.png"), Them
 const Icon EYE_OPEN_TOOLBAR({{QLatin1String(":/core/images/eye_open.png"), Theme::IconsBaseColor}});
 const Icon EYE_CLOSED_TOOLBAR({{QLatin1String(":/core/images/eye_closed.png"), Theme::IconsBaseColor}});
 
-const Icon LOGO_32(QLatin1String(":/core/images/logo/icon_32x32.png"));
-const Icon LOGO_64(QLatin1String(":/core/images/logo/icon_64x64.png"));
-const Icon LOGO_128(QLatin1String(":/core/images/logo/icon_128x128.png"));
-const Icon LOGO_256(QLatin1String(":/core/images/logo/icon_256x256.png"));
+const Icon LOGO_76(QLatin1String(":/core/images/logo/76.png"));
+const Icon LOGO_120(QLatin1String(":/core/images/logo/120.png"));
+const Icon LOGO_128(QLatin1String(":/core/images/logo/128.png"));
+const Icon LOGO_152(QLatin1String(":/core/images/logo/152.png"));
+const Icon LOGO_180(QLatin1String(":/core/images/logo/180.png"));
+const Icon LOGO_192(QLatin1String(":/core/images/logo/192.png"));
 
 } // namespace Icons
 } // namespace Core

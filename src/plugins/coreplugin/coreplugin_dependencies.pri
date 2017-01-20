@@ -6,6 +6,7 @@ APP_LIB_DEPENDS += \
 	extensionsystem \
 	utils \
 	widgets \
+#        entity
 
 APP_PLUGIN_DEPENDS += \
 

@@ -1,13 +1,17 @@
 <RCC>
 	<qresource prefix="/core">
-		<file>images/logo/icon_32x32.png</file>
-		<file>images/logo/icon_32x32@2x.png</file>
-		<file>images/logo/icon_64x64.png</file>
-		<file>images/logo/icon_64x64@2x.png</file>
-		<file>images/logo/icon_128x128.png</file>
-		<file>images/logo/icon_128x128@2x.png</file>
-		<file>images/logo/icon_256x256.png</file>
-		<file>images/logo/icon_256x256@2x.png</file>
+                <file>images/logo/76.png</file>
+                <file>images/logo/76@2x.png</file>
+                <file>images/logo/120.png</file>
+                <file>images/logo/120@2x.png</file>
+                <file>images/logo/128.png</file>
+                <file>images/logo/128@2x.png</file>
+                <file>images/logo/152.png</file>
+                <file>images/logo/152@2x.png</file>
+                <file>images/logo/180.png</file>
+                <file>images/logo/180@2x.png</file>
+                <file>images/logo/192.png</file>
+                <file>images/logo/192@2x.png</file>
 		<file>images/clean_pane_small.png</file>
 		<file>images/clean_pane_small@2x.png</file>
 		<file>images/compile_error_taskbar.png</file>
