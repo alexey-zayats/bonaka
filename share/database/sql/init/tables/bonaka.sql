@@ -1,0 +1,1 @@
+-- init/tables/bonaka.sql
