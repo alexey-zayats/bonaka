@@ -122,7 +122,9 @@ public:
         IconsNavigationArrowsColor,
         IconsBuildHammerHandleColor,
         IconsBuildHammerHeadColor,
-        IconsModeEstimationActiveColor,
+        IconsModeEntityActiveColor,
+        IconsModeCalculateActiveColor,
+        IconsModeRegistryActiveColor,
 
         /* Code model Icons */
 

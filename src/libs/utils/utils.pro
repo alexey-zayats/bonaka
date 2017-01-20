@@ -39,6 +39,7 @@ SOURCES += \
 	navigationtreeview.cpp \
 	tooltip/tips.cpp \
 	tooltip/tooltip.cpp \
+        basetreeview.cpp \
 
 HEADERS += \
 	hostosinfo.h \
@@ -85,6 +86,7 @@ HEADERS += \
 	tooltip/tooltip.h \
 	tooltip/effects.h \
 	tooltip/reuse.h \
+        basetreeview.h \
 
 !macx {
 	win32 {
