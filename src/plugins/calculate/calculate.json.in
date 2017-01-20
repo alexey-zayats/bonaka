@@ -1,5 +1,5 @@
 {
-	\"Name\" : \"Estimation\",
+	\"Name\" : \"Calculate\",
 	\"Version\" : \"$$APP_VERSION\",
 	\"CompatVersion\" : \"$$APP_COMPAT_VERSION\",
 	\"Required\" : false,
@@ -8,7 +8,7 @@
 	\"Copyright\" : \"(C) 2016 Agitum\",
 	\"License\" : [ \"\"],
 	\"Category\" : \"Core\",
-	\"Description\" : \"The estimation plugin for the bonaka.\",
+	\"Description\" : \"The calculate plugin for the bonaka.\",
 	\"Url\" : \"https://bonaka.ru/\",
 	\"Platform\": \"\",
 	$$dependencyList
