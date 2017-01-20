@@ -1,4 +1,4 @@
-APP_PLUGIN_NAME = estimation
+APP_PLUGIN_NAME = calculate
 
 APP_PLUGIN_VERSION = 0.0.1
 
