@@ -2,5 +2,7 @@ TEMPLATE = subdirs
 CONFIG = ordered
 SUBDIRS  = \
 	coreplugin \
-	estimation \
+	calculate \
+#        entity \
+#        registry \
 

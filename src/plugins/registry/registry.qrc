@@ -1,0 +1,8 @@
+<RCC>
+	<qresource prefix="/registry">
+	<file>images/mode_registry_mask.png</file>
+	<file>images/mode_registry_mask@2x.png</file>
+	<file>images/mode_registry.png</file>
+	<file>images/mode_registry@2x.png</file>
+	</qresource>
+</RCC>

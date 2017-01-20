@@ -1,0 +1,15 @@
+{
+	\"Name\" : \"Registry\",
+	\"Version\" : \"$$APP_VERSION\",
+	\"CompatVersion\" : \"$$APP_COMPAT_VERSION\",
+	\"Required\" : false,
+	\"DisabledByDefault\": false,
+	\"Vendor\" : \"Alexey Zayats\",
+	\"Copyright\" : \"(C) 2016 Agitum\",
+	\"License\" : [ \"\"],
+	\"Category\" : \"Core\",
+	\"Description\" : \"The registry plugin for the bonaka.\",
+	\"Url\" : \"https://bonaka.ru/\",
+	\"Platform\": \"\",
+	$$dependencyList
+}
