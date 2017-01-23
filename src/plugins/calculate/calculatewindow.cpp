@@ -1,6 +1,5 @@
 #include "calculatewindow.h"
 
-#include "boilerwidget.h"
 #include "boilercalculate.h"
 #include "heatexchanger.h"
 #include "heatvolume.h"
@@ -56,7 +55,6 @@ CalculateWindow::CalculateWindow() :
     font.setPointSizeF(font.pointSizeF() * 1.2);
     activeLabel->setFont(font);
 
-    boilerWidget = new BoilerWidget();
     boilerCalculate = new BoilerCalculate();
     heatExchnagerWidget = new HeatExchanger(this);
     heatVolumeWidget = new HeatVolume(this);
@@ -65,14 +63,8 @@ CalculateWindow::CalculateWindow() :
 
     boilerButton = new QPushButton(this);
     boilerButton->setCheckable(true);
-//    boilerButton->setChecked(true);
     boilerButton->setAutoExclusive(true);
     boilerButton->setText( tr("Котлы") );
-
-    boilerButton2 = new QPushButton(this);
-    boilerButton2->setCheckable(true);
-    boilerButton2->setAutoExclusive(true);
-    boilerButton2->setText( tr("Котлы2") );
 
     heatExchangeButton = new QPushButton(this);
     heatExchangeButton->setCheckable(true);
@@ -85,14 +77,12 @@ CalculateWindow::CalculateWindow() :
     heatVolume->setText( tr("Объем систем") );
 
     connect(boilerButton, SIGNAL(toggled(bool)), map, SLOT(map()));
-    connect(boilerButton2, SIGNAL(toggled(bool)), map, SLOT(map()));
     connect(heatExchangeButton, SIGNAL(toggled(bool)), map, SLOT(map()));
     connect(heatVolume, SIGNAL(toggled(bool)), map, SLOT(map()));
 
     map->setMapping(boilerButton, 1);
-    map->setMapping(boilerButton2, 2);
-    map->setMapping(heatExchangeButton, 3);
-    map->setMapping(heatVolume, 4);
+    map->setMapping(heatExchangeButton, 2);
+    map->setMapping(heatVolume, 3);
 
     connect(map, SIGNAL(mapped(int)), this, SLOT(widgetChanged(int)));
 
@@ -103,7 +93,6 @@ CalculateWindow::CalculateWindow() :
     innerLayout->setContentsMargins(14, innerLayout->spacing(), 14, 0);
     innerLayout->addWidget(activeLabel);
     innerLayout->addWidget(boilerButton);
-    innerLayout->addWidget(boilerButton2);
     innerLayout->addWidget(heatExchangeButton);
     innerLayout->addWidget(heatVolume);
     innerLayout->addSpacerItem(new QSpacerItem(10,10));
@@ -128,15 +117,12 @@ void CalculateWindow::widgetChanged(int i)
 {
     switch (i) {
     case 1:
-        setPanel(boilerWidget);
-        break;
-    case 2:
         setPanel(boilerCalculate);
         break;
-    case 3:
+    case 2:
         setPanel(heatExchnagerWidget);
         break;
-    case 4:
+    case 3:
         setPanel(heatVolumeWidget);
         break;
     }

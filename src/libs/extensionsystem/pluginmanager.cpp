@@ -11,6 +11,7 @@
 #include <QWriteLocker>
 #include <QTimer>
 #include <QSysInfo>
+#include <QDebug>
 
 #include "pluginmanager.h"
 #include "pluginmanager_p.h"
@@ -332,8 +333,10 @@ bool PluginManager::hasError()
 {
     foreach (PluginSpec *spec, plugins()) {
         // only show errors on startup if plugin is enabled.
-        if (spec->hasError() && spec->isEffectivelyEnabled())
+        if (spec->hasError() && spec->isEffectivelyEnabled()) {
+            qDebug() << spec->name() << spec->errorString();
             return true;
+        }
     }
     return false;
 }

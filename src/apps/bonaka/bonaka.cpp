@@ -227,7 +227,7 @@ int main(int argc, char **argv)
 
     PluginManager::loadPlugins();
     if ( PluginManager::hasError() ) {
-        displayError(msgCoreLoadFailure( QLatin1String("PluginManager::hasError() == ture") ));
+        displayError(msgCoreLoadFailure( QLatin1String("PluginManager::hasError() == ture"  ) ));
         return 1;
     }
     if (coreplugin->hasError()) {

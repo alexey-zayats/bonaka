@@ -15,7 +15,6 @@ namespace Calculate
 {
 
 class BoilerCalculate;
-class BoilerWidget;
 class HeatExchanger;
 class HeatVolume;
 
@@ -32,13 +31,11 @@ private:
     void setPanel(QWidget *panel);
 
     Utils::ListWidget *calcListWidget;
-    BoilerWidget *boilerWidget;
     HeatExchanger *heatExchnagerWidget;
     HeatVolume *heatVolumeWidget;
     BoilerCalculate *boilerCalculate;
 
     QPushButton *boilerButton;
-    QPushButton *boilerButton2;
     QPushButton *heatVolume;
     QPushButton *heatExchangeButton;
 };
