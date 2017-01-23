@@ -149,7 +149,7 @@
               <property name="geometry">
                <rect>
                 <x>0</x>
-                <y>0</y>
+                <y>-102</y>
                 <width>480</width>
                 <height>697</height>
                </rect>
@@ -221,9 +221,6 @@
                       </property>
                      </widget>
                     </item>
-                    <item row="3" column="2">
-                     <widget class="QSpinBox" name="wPowerSpin1"/>
-                    </item>
                     <item row="4" column="0">
                      <widget class="QLabel" name="label_8">
                       <property name="minimumSize">
@@ -245,6 +242,9 @@
                     </item>
                     <item row="4" column="2">
                      <widget class="QSpinBox" name="wPowerSpin2">
+                      <property name="minimum">
+                       <number>50</number>
+                      </property>
                       <property name="maximum">
                        <number>100</number>
                       </property>
@@ -341,6 +341,9 @@
                       </property>
                      </widget>
                     </item>
+                    <item row="3" column="2">
+                     <widget class="QDoubleSpinBox" name="wPowerSpin1"/>
+                    </item>
                    </layout>
                   </item>
                  </layout>
@@ -405,7 +408,7 @@
                        </size>
                       </property>
                       <property name="text">
-                       <string>&lt;b&gt;&amp;#955;&lt;sub&gt;нак&lt;/sub&gt;&lt;/b&gt;, Вт/м*К</string>
+                       <string>&lt;b&gt;&amp;#955;&lt;sub&gt;нак&lt;/sub&gt;&lt;/b&gt;, Вт/м&lt;sup&gt;2&lt;/sup&gt;*К</string>
                       </property>
                      </widget>
                     </item>
@@ -591,7 +594,11 @@
                      </widget>
                     </item>
                     <item row="6" column="2">
-                     <widget class="QSpinBox" name="sModeSpin1"/>
+                     <widget class="QSpinBox" name="sModeSpin1">
+                      <property name="maximum">
+                       <number>9000</number>
+                      </property>
+                     </widget>
                     </item>
                     <item row="8" column="2">
                      <widget class="QSpinBox" name="sModeSpin2">
@@ -702,11 +709,15 @@
                       </property>
                      </widget>
                     </item>
-                    <item row="3" column="2">
-                     <widget class="QSpinBox" name="sPowerSpin1"/>
-                    </item>
                     <item row="4" column="2">
-                     <widget class="QSpinBox" name="sPowerSpin2"/>
+                     <widget class="QSpinBox" name="sPowerSpin2">
+                      <property name="minimum">
+                       <number>50</number>
+                      </property>
+                      <property name="maximum">
+                       <number>100</number>
+                      </property>
+                     </widget>
                     </item>
                     <item row="7" column="0" rowspan="2">
                      <widget class="QLabel" name="label_32">
@@ -735,7 +746,21 @@
                      </widget>
                     </item>
                     <item row="9" column="2">
-                     <widget class="QDoubleSpinBox" name="sInputWaterTemp"/>
+                     <widget class="QDoubleSpinBox" name="sInputWaterTemp">
+                      <property name="maximum">
+                       <double>500.000000000000000</double>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="3" column="2">
+                     <widget class="QDoubleSpinBox" name="sPowerSpin1">
+                      <property name="minimum">
+                       <double>5.000000000000000</double>
+                      </property>
+                      <property name="maximum">
+                       <double>10.000000000000000</double>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </item>
@@ -886,7 +911,7 @@
                        </size>
                       </property>
                       <property name="text">
-                       <string>&lt;b&gt;&amp;#955;&lt;sub&gt;нак&lt;/sub&gt;&lt;/b&gt;, Вт/м*К</string>
+                       <string>&lt;b&gt;&amp;#955;&lt;sub&gt;нак&lt;/sub&gt;&lt;/b&gt;, Вт/м&lt;sup&gt;2&lt;/sup&gt;*К</string>
                       </property>
                      </widget>
                     </item>
@@ -994,7 +1019,7 @@
                       <item row="0" column="0">
                        <widget class="QLabel" name="label_17">
                         <property name="text">
-                         <string>1. Термическое сопротивление накипи, &lt;b&gt;R&lt;sub&gt;НАК&lt;/sub&gt;&lt;/b&gt;, (м&lt;sup&gt;2&lt;/sup&gt;*К)/Вт</string>
+                         <string>1. Термическое сопротивление накипи, &lt;b&gt;R&lt;sub&gt;НАК&lt;/sub&gt;&lt;/b&gt;, (м*К)/Вт</string>
                         </property>
                        </widget>
                       </item>
@@ -1257,6 +1282,55 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>waterRadio</tabstop>
+  <tabstop>steamRadio</tabstop>
+  <tabstop>wBoilerCombo</tabstop>
+  <tabstop>wPowerSpin1</tabstop>
+  <tabstop>wPowerSpin2</tabstop>
+  <tabstop>wModeSpin1</tabstop>
+  <tabstop>wGeoLine</tabstop>
+  <tabstop>wModeSpin2</tabstop>
+  <tabstop>wFuelCombo</tabstop>
+  <tabstop>wFuelCostSpin</tabstop>
+  <tabstop>wFuelHeatSpin</tabstop>
+  <tabstop>wScumThickSpin</tabstop>
+  <tabstop>wScumTypeCombo</tabstop>
+  <tabstop>wScumHeatSpin</tabstop>
+  <tabstop>calculateButton</tabstop>
+  <tabstop>sBoilerCombo</tabstop>
+  <tabstop>sPowerSpin1</tabstop>
+  <tabstop>sPowerSpin2</tabstop>
+  <tabstop>sModeSpin1</tabstop>
+  <tabstop>sGeoLine</tabstop>
+  <tabstop>sModeSpin2</tabstop>
+  <tabstop>sInputWaterTemp</tabstop>
+  <tabstop>sFuelCombo</tabstop>
+  <tabstop>sFuelCostSpin</tabstop>
+  <tabstop>sFuelHeatSpin</tabstop>
+  <tabstop>sScumThickSpin</tabstop>
+  <tabstop>sScumTypeCombo</tabstop>
+  <tabstop>sScumHeatSpin</tabstop>
+  <tabstop>RScum</tabstop>
+  <tabstop>efficiencyScum50</tabstop>
+  <tabstop>efficiencyScum100</tabstop>
+  <tabstop>loadAverage</tabstop>
+  <tabstop>efficiencyScumAgv</tabstop>
+  <tabstop>efficiencyAgv</tabstop>
+  <tabstop>termalConductAvg</tabstop>
+  <tabstop>fuelConsumption</tabstop>
+  <tabstop>efficiencyIncrease</tabstop>
+  <tabstop>reduceFuel</tabstop>
+  <tabstop>reduceFuelAnnual</tabstop>
+  <tabstop>annualSavings</tabstop>
+  <tabstop>paybackPreiod</tabstop>
+  <tabstop>scrollArea</tabstop>
+  <tabstop>scrollArea_2</tabstop>
+  <tabstop>scrollArea_3</tabstop>
+  <tabstop>toFormButton</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>detailEditor</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

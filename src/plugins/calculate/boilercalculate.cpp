@@ -260,6 +260,7 @@ void BoilerCalculate::showPane(int left, int right)
 {
     QList<int> list;
     list << 100 * left << 100 * right;
+
     splitter->setSizes(list);
 }
 
@@ -444,7 +445,7 @@ void BoilerCalculate::calculateButton_released()
     switch (boilerType) {
     case 0: {
         // КПД котла с накипью при режиме 50% процентной нагрузки с накипью
-        k0 = -5 * qPow(10, -6);
+        k0 = -5 * qPow(10, 6);
         k1 = 592943;
         k2 = 25869;
         k3 = 189.61;
@@ -711,6 +712,8 @@ void BoilerCalculate::calculateButton_released()
 }
 
 BoilerCalculate::~BoilerCalculate()
-{}
+{
+    delete m_boilerModels;
+}
 
 }
