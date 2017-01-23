@@ -109,7 +109,7 @@
        <item row="0" column="2">
         <widget class="QPushButton" name="calculateButton">
          <property name="text">
-          <string>Расчитать</string>
+          <string>Рассчитать</string>
          </property>
         </widget>
        </item>
@@ -150,8 +150,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>521</width>
-                <height>610</height>
+                <width>480</width>
+                <height>697</height>
                </rect>
               </property>
               <layout class="QGridLayout" name="gridLayout_7">
@@ -176,7 +176,7 @@
                     <item row="2" column="0" colspan="3">
                      <widget class="QLabel" name="label_4">
                       <property name="text">
-                       <string>Производительность, для серднего режима</string>
+                       <string>Производительность, для среднего режима</string>
                       </property>
                      </widget>
                     </item>
@@ -544,8 +544,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>504</width>
-                <height>613</height>
+                <width>480</width>
+                <height>728</height>
                </rect>
               </property>
               <layout class="QGridLayout" name="gridLayout_25">
@@ -959,8 +959,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>438</width>
-                <height>549</height>
+                <width>481</width>
+                <height>547</height>
                </rect>
               </property>
               <layout class="QGridLayout" name="gridLayout_18">
