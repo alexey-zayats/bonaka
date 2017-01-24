@@ -149,7 +149,7 @@
               <property name="geometry">
                <rect>
                 <x>0</x>
-                <y>0</y>
+                <y>-102</y>
                 <width>480</width>
                 <height>697</height>
                </rect>
@@ -416,7 +416,14 @@
                      <widget class="QComboBox" name="wScumTypeCombo"/>
                     </item>
                     <item row="4" column="1">
-                     <widget class="QDoubleSpinBox" name="wScumHeatSpin"/>
+                     <widget class="QDoubleSpinBox" name="wScumHeatSpin">
+                      <property name="minimum">
+                       <double>0.010000000000000</double>
+                      </property>
+                      <property name="maximum">
+                       <double>5.500000000000000</double>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </item>
@@ -469,8 +476,11 @@
                     </item>
                     <item row="3" column="1">
                      <widget class="QDoubleSpinBox" name="wFuelCostSpin">
+                      <property name="minimum">
+                       <double>0.010000000000000</double>
+                      </property>
                       <property name="maximum">
-                       <double>999999.000000000000000</double>
+                       <double>10.000000000000000</double>
                       </property>
                      </widget>
                     </item>
@@ -939,7 +949,14 @@
                      <widget class="QComboBox" name="sScumTypeCombo"/>
                     </item>
                     <item row="4" column="1">
-                     <widget class="QDoubleSpinBox" name="sScumHeatSpin"/>
+                     <widget class="QDoubleSpinBox" name="sScumHeatSpin">
+                      <property name="minimum">
+                       <double>0.010000000000000</double>
+                      </property>
+                      <property name="maximum">
+                       <double>5.500000000000000</double>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </item>
