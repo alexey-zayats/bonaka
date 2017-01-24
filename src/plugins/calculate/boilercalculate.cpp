@@ -53,9 +53,9 @@ BoilerCalculate::BoilerCalculate(QWidget *parent)
 
     m_boilerModels = new BoilerModels();
 
-    showPane(1,0);
-
     init();
+
+    boilerTypeChanged(0);
 }
 
 void BoilerCalculate::init()
