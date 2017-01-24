@@ -474,7 +474,7 @@ void BoilerCalculate::calculateButton_released()
     }
     case 1:
         k0 = 22853;
-        k1 = 854.9;
+        k1 = 1854.9;
         k2 = 89.607;
         kpd_50_scum = k0 * qPow(R_Scum, 2) - k1 * R_Scum + k2;
 

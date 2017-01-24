@@ -136,7 +136,7 @@
        <item row="1" column="0" colspan="3">
         <widget class="QStackedWidget" name="stackedWidget">
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="page">
           <layout class="QGridLayout" name="gridLayout_8">
@@ -149,7 +149,7 @@
               <property name="geometry">
                <rect>
                 <x>0</x>
-                <y>-102</y>
+                <y>0</y>
                 <width>480</width>
                 <height>697</height>
                </rect>
@@ -503,7 +503,7 @@
                     <item row="5" column="1">
                      <widget class="QDoubleSpinBox" name="wFuelHeatSpin">
                       <property name="maximum">
-                       <double>9999.000000000000000</double>
+                       <double>100.000000000000000</double>
                       </property>
                      </widget>
                     </item>
@@ -546,7 +546,7 @@
               <property name="geometry">
                <rect>
                 <x>0</x>
-                <y>0</y>
+                <y>-133</y>
                 <width>480</width>
                 <height>728</height>
                </rect>
@@ -596,7 +596,7 @@
                     <item row="6" column="2">
                      <widget class="QSpinBox" name="sModeSpin1">
                       <property name="maximum">
-                       <number>9000</number>
+                       <number>8760</number>
                       </property>
                      </widget>
                     </item>
@@ -747,18 +747,24 @@
                     </item>
                     <item row="9" column="2">
                      <widget class="QDoubleSpinBox" name="sInputWaterTemp">
+                      <property name="minimum">
+                       <double>100.000000000000000</double>
+                      </property>
                       <property name="maximum">
-                       <double>500.000000000000000</double>
+                       <double>300.000000000000000</double>
                       </property>
                      </widget>
                     </item>
                     <item row="3" column="2">
                      <widget class="QDoubleSpinBox" name="sPowerSpin1">
                       <property name="minimum">
-                       <double>5.000000000000000</double>
+                       <double>0.000000000000000</double>
                       </property>
                       <property name="maximum">
                        <double>10.000000000000000</double>
+                      </property>
+                      <property name="value">
+                       <double>0.000000000000000</double>
                       </property>
                      </widget>
                     </item>
@@ -813,8 +819,11 @@
                     </item>
                     <item row="3" column="1">
                      <widget class="QDoubleSpinBox" name="sFuelCostSpin">
+                      <property name="minimum">
+                       <double>0.010000000000000</double>
+                      </property>
                       <property name="maximum">
-                       <double>999999.000000000000000</double>
+                       <double>10.000000000000000</double>
                       </property>
                      </widget>
                     </item>
@@ -845,7 +854,11 @@
                      </widget>
                     </item>
                     <item row="5" column="1">
-                     <widget class="QDoubleSpinBox" name="sFuelHeatSpin"/>
+                     <widget class="QDoubleSpinBox" name="sFuelHeatSpin">
+                      <property name="maximum">
+                       <double>100.000000000000000</double>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </item>
@@ -887,7 +900,14 @@
                      </widget>
                     </item>
                     <item row="1" column="1">
-                     <widget class="QDoubleSpinBox" name="sScumThickSpin"/>
+                     <widget class="QDoubleSpinBox" name="sScumThickSpin">
+                      <property name="minimum">
+                       <double>0.010000000000000</double>
+                      </property>
+                      <property name="maximum">
+                       <double>30.000000000000000</double>
+                      </property>
+                     </widget>
                     </item>
                     <item row="2" column="0" colspan="2">
                      <widget class="QLabel" name="label_43">
@@ -1326,7 +1346,6 @@
   <tabstop>paybackPreiod</tabstop>
   <tabstop>scrollArea</tabstop>
   <tabstop>scrollArea_2</tabstop>
-  <tabstop>scrollArea_3</tabstop>
   <tabstop>toFormButton</tabstop>
   <tabstop>tabWidget</tabstop>
   <tabstop>detailEditor</tabstop>
