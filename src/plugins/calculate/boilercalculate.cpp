@@ -51,11 +51,94 @@ BoilerCalculate::BoilerCalculate(QWidget *parent)
     connect(calculateButton, SIGNAL(released()), this, SLOT(calculateButton_released()));
     connect(toFormButton, SIGNAL(released()), this, SLOT(toFormButton_released()));
 
+
+    connect(wPowerSpin1, SIGNAL(editingFinished()), this, SLOT(powerSpinEdited()));
+    connect(wPowerSpin2, SIGNAL(editingFinished()), this, SLOT(powerSpinEdited()));
+
+    connect(sPowerSpin1, SIGNAL(editingFinished()), this, SLOT(powerSpinEdited()));
+    connect(sPowerSpin2, SIGNAL(editingFinished()), this, SLOT(powerSpinEdited()));
+
+    connect(wModeSpin1, SIGNAL(editingFinished()), this, SLOT(modeSpinEdited()));
+    connect(wModeSpin2, SIGNAL(editingFinished()), this, SLOT(modeSpinEdited()));
+
+    connect(sModeSpin1, SIGNAL(editingFinished()), this, SLOT(modeSpinEdited()));
+    connect(sModeSpin2, SIGNAL(editingFinished()), this, SLOT(modeSpinEdited()));
+
     m_boilerModels = new BoilerModels();
 
     init();
+}
 
-    boilerTypeChanged(0);
+void BoilerCalculate::powerSpinEdited()
+{
+    qreal k0 = 0.0,
+            k1 = 100,
+            inValue = 0.0,
+            outValue = 0.0;
+
+    QString senderName = sender()->objectName();
+    if ( senderName.startsWith("w") ) {
+        k0 = 4.65;
+    } else {
+        k0 = 10;
+    }
+
+    if ( senderName.compare("wPowerSpin1") == 0 ) {
+        inValue = wPowerSpin1->value();
+        outValue = (inValue/k0)*k1;
+        wPowerSpin2->setValue(outValue);
+    }
+    else if ( senderName.compare("wPowerSpin2") == 0 ) {
+        inValue = wPowerSpin2->value();
+        outValue = (inValue*k0)/k1;
+        wPowerSpin1->setValue(outValue);
+    }
+    else if ( senderName.compare("sPowerSpin1") == 0 ) {
+        inValue = sPowerSpin1->value();
+        outValue = (inValue/k0)*k1;
+        sPowerSpin2->setValue(outValue);
+    }
+    else if ( senderName.compare("sPowerSpin2") == 0 ) {
+        inValue = sPowerSpin2->value();
+        outValue = (inValue*k0)/k1;
+        sPowerSpin1->setValue(outValue);
+    }
+}
+
+void BoilerCalculate::modeSpinEdited()
+{
+    qreal k0 = 24;
+    qreal value = 0.0;
+
+    QSpinBox *src = 0,
+             *dst = 0;
+
+    bool isDivide = false;
+    QString senderName = sender()->objectName();
+
+    if ( senderName.compare("wModeSpin1") == 0 ) {
+        isDivide = true;
+        src = wModeSpin1;
+        dst = wModeSpin2;
+    }
+    else if ( senderName.compare("wModeSpin2") == 0 ) {
+        src = wModeSpin2;
+        dst = wModeSpin1;
+    }
+    else if ( senderName.compare("sModeSpin1") == 0 ) {
+        isDivide = true;
+        src = sModeSpin1;
+        dst = sModeSpin2;
+    }
+    else if ( senderName.compare("sModeSpin2") == 0 ) {
+        src = sModeSpin2;
+        dst = sModeSpin1;
+    }
+
+    if ( src && dst ) {
+        value = src->value();
+        dst->setValue( isDivide ? value / k0 : value * k0 );
+    }
 }
 
 void BoilerCalculate::init()
@@ -66,6 +149,9 @@ void BoilerCalculate::init()
     steamBoilerChanged(1);
     emit wScumTypeCombo->activated(0);
     emit sScumTypeCombo->activated(0);
+    boilerTypeChanged(0);
+    emit wPowerSpin2->editingFinished();
+    emit sPowerSpin2->editingFinished();
 }
 
 void BoilerCalculate::steamBoilerChanged(int index)
@@ -170,6 +256,7 @@ void BoilerCalculate::setHeatDays(const QString &text,
     }
 
     scumHeatSpin->setValue(  items.at(0).data(Qt::UserRole + 1).toInt() );
+    emit scumHeatSpin->editingFinished();
 }
 
 void BoilerCalculate::initCompleters()

@@ -33,6 +33,9 @@ public slots:
     void setWaterHeatDays(const QString &);
     void setSteamHeatDays(const QString &);
 
+    void powerSpinEdited();
+    void modeSpinEdited();
+
 private:
     void init();
     void initCompleters();
